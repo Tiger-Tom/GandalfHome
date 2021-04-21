@@ -1,0 +1,12 @@
+How to change default speaker/audio output on Ubuntu:
+1: Run "pactl list short sinks"
+2: 2a if device is not suspeneded, 2b if device is suspended. If you do not see your device, continue to step 3:
+ 2a: Run "pactl set-default-sink <Device_Name>" (and/or add to startup programs)
+ 2b: Comment out (add "#" before) the line "load-module module-suspend-on-idle" in /etc/pulse/default.pa" and restart pulseaudio ("pulseaudio -k" + "pulseaudio --start") (You might still need to do step 2a after this)
+3: Run "aplay -l"
+4: Find the device you want. Note the card number (card x) and the device number (device y)
+5: Test the device with the command "speaker-test --channels 2 --rate 48000 --device hw:<Card Number>,<Device Number>". If the device does not work, then you have another problem on your hands
+6: add "load-module module-alsa-sink device=hw:<Card Number>,<Device Number>" to "/etc/pulse/default.pa" and comment out (add "#" before) the line "load-module module-default-device-restore"
+7: To restart pulseaudio, simple type "pulseaudio -k" and then "pulseaudio --start"
+8: Repeat steps 1 and 2
+9: If all else fails, remove pulseaudio and all of it's config with "sudo apt-get --purge --reinstall install pulseaudio" and retry from step 1

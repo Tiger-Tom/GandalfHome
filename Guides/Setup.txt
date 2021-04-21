@@ -1,0 +1,14 @@
+Ubuntu Setup Guide: (Runs fine on Ubuntu Raspberry PI)
+1: If you are using a USB drive to store these files, do step 2. Otherwise copy "Gandalf" folder over to /home/<USERNAME>/ and skip to step 3.
+2: Only do this step if you are using a USB drive (everything should be copied over to the USB)
+2a: Mount the USB drive to /mnt/usb-drive
+2b: Run /mnt/usb-drive/UpdateGandalf.sh (do not run as sudo if possible) (you can also run this to update Gandalf, and it should keep all of your configuration)
+3: Change directory to the "Gandalf" folder
+4: Install everything in RequiredAptInstalls.txt
+5: Use "pip3 install -r requirements.txt" in "Gandalf" folder
+6: Enable pulseaudio auto-spawn "sudo /etc/init.d/pulseaudio-enable-autospawn start"
+7: Restart device w/ microphone connected ("sudo shutdown -r 0")
+
+Windows Setup Guide:
+1: Copy "Gandalf" folder to wherever you want it to be, and move to that folder.
+2: Run command "pip3 install -r requirements.txt" in "Gandalf" folder
