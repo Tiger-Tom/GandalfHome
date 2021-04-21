@@ -5,4 +5,5 @@ overrideInput:0 #Override input to text (0/1)
 micSpeechRecognizeThreshold: #Volume threshold to listen, leave blank for automatic
 micName:default-win #Leave blank for automatic, enter "default" for OS default (only recommended on Windows), enter "default-win" to use default if Windows and automatic if otherwise, or enter name (not case-sensitive)
 muteBootupBetween:22-7 #Mute the bootup audio between the two hours (in case of power outage and auto-restart) (format is HH-HH, in 24-hour time)
+temperatureUnits:c #Preffered temperature units. Can be "k" for Kelvin, "c" for Celsius, or "f" for Fahrenheit
  #Make sure to leave a space before all comments, even on empty lines!

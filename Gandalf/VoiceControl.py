@@ -1,3 +1,6 @@
+####################
+version = '1.2'
+####################
 #Imports
 import speech_recognition as sr
 import time
@@ -46,6 +49,7 @@ muteBootupEnd = int(properties['muteBootupBetween'].split('-')[1])
 #confirmedMicNameParts = properties['confirmedMicNameParts'].split(',')
 #micIDSettings = [properties['micName'], properties['micIndex'], properties['micIDMode']]
 micName = properties['micName']
+tempUnits = properties['temperatureUnits'].lower()
 if properties['micSpeechRecognizeThreshold'] != '':
     spR.energy_threshold = int(properties['micSpeechRecognizeThreshold'])
 #In/Out Handler
@@ -82,6 +86,7 @@ try:
     import WyzeLightControl.WyzeLightControl as module_WLC
     import ServerMode.ServerMode as server
     #import RokuControl.RokuControl as rokuCtrl
+    import WeatherInfo.WeatherInfo as module_OWM_W
 except:
     print (e)
     output('Fatal: Unable to connect to required modules')
@@ -113,6 +118,8 @@ def playSound(soundDir):
 def speech_handler():
     global sPr
     global overrideInput
+    global version
+    global tempUnits
     #playSound('./Audio/ready.wav')
     playSound('./Audio/let-the-ring-bearer-decide.wav')
     audio = mainInput()
@@ -208,7 +215,18 @@ def speech_handler():
         output('Calculating '+calc)
         answer = simpleeval.simple_eval(calc)
         output(answer)
-    elif (query == 'what' and queryRaw[1].lower() == 'is') or query == 'translate':
+    elif (query == 'weather' or (' '.join(queryRaw[0:5]).lower() == 'what is the weather in')) or (query == 'temperature' or (' '.join(queryRaw[0:5]).lower() == 'what is the temperature in')):
+        if query == 'weather' or query == 'temperature':
+            place = ' '.join(queryRaw[1:])
+        else:
+            place = ' '.join(queryRaw[5:])
+        if 'temperature' in queryRaw:
+            output('Checking temperature in '+place)
+            module_OWM_W.handle_weather('temperature', place, output, tempUnits)
+        else:
+            output('Checking weather in '+place)
+            module_OWM_W.handle_weather('weather', place, output)
+    elif (query == 'what' and queryRaw[1].lower() == 'is' and queryRaw[-2].lower() == 'in') or query == 'translate':
         translator = google_trans_new.google_translator()
         if query == 'translate':
             text = ' '.join(queryRaw[1:-2]).lower()
@@ -273,6 +291,8 @@ def speech_handler():
             output('Cannot convert '+queryRaw[2]+' to integer')
     elif ' '.join(queryRaw[0:2]).lower() == 'never mind' or query == 'cancel':
         playSound('./Audio/all-right-then-keep-your-secrets.wav')
+    elif query == 'version':
+        output('Running version '+version)
     else:
         playSound('./Audio/do-not-take-me.wav')
 #Find Microphone
