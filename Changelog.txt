@@ -1,5 +1,5 @@
 Release 1.2: 04-21-2021
-Adds OWM integration and adds extra way to say command cancel ("nevermind"). Also adds version command.
+Adds OWM integration, Changelog.txt, adds extra way to say command cancel ("nevermind"), and adds version command.
 
 Release 1.1: 04-21-2021
 Adds command to cancel ("cancel"/"never mind") and adds respective audio.
