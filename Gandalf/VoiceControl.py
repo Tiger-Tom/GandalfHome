@@ -271,6 +271,8 @@ def speech_handler():
                 output('Joke '+str(i+1)+' of '+str(rang)+': '+pyjokes.get_joke())
         except:
             output('Cannot convert '+queryRaw[2]+' to integer')
+    elif ' '.join(queryRaw[0:2]).lower() == 'never mind' or query == 'cancel':
+        playSound('./Audio/all-right-then-keep-your-secrets.wav')
     else:
         playSound('./Audio/do-not-take-me.wav')
 #Find Microphone

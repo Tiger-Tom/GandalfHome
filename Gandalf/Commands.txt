@@ -19,3 +19,5 @@ Fun:
 - tell me [number] jokes
 Debug:
 - server
+Other:
+- "never mind"/cancel
