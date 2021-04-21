@@ -9,6 +9,4 @@ Type=idle
 
 Ubuntu Autostart:
 1: How to run program on user login (default path is "/home/<USERNAME>/Gandalf", AKA "~/Gandalf", assuming that you have the command "python3")
-2: You can either do 2a or 2b. They should have the same result. 2b is usually easier.
-2a: Type "echo 'cd /home/<USERNAME>/Gandalf/ && python3 <PATH>/VoiceControl.py' >>/home/<USERNAME>/.bashrc"
-2b: Add the line "cd /home/<USERNAME>/Gandalf/ && python3 <PATH>/VoiceControl.py" to "/home/<USERNAME>/.bashrc"
+2: Add the line "cd <PATH>/Gandalf/ && python3 <PATH>/VoiceControl.py" to "/home/<USERNAME>/.bash_login"
