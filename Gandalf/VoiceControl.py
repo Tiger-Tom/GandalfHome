@@ -1,5 +1,5 @@
 ####################
-version = '1.2'
+version = '1.3'
 ####################
 #Imports
 import speech_recognition as sr
@@ -40,7 +40,8 @@ except Exception as e:
     exit()
 triggerWord = properties['triggerWord']
 voices = ttsEngine.getProperty('voices')
-ttsEngine.setProperty('voice', voices[int(properties['voiceIndex'])].id)
+if properties['voiceIndex'] != '':
+    ttsEngine.setProperty('voice', voices[int(properties['voiceIndex'])].id)
 ttsEngine.setProperty('rate', int(properties['voiceRate']))
 overrideInput = bool(int(properties['overrideInput']))
 muteBootupStart = int(properties['muteBootupBetween'].split('-')[0])
@@ -50,10 +51,12 @@ muteBootupEnd = int(properties['muteBootupBetween'].split('-')[1])
 #micIDSettings = [properties['micName'], properties['micIndex'], properties['micIDMode']]
 micName = properties['micName']
 tempUnits = properties['temperatureUnits'].lower()
+adjustForAmbientNoise = properties['adjustForAmbientNoise']
 if properties['micSpeechRecognizeThreshold'] != '':
     spR.energy_threshold = int(properties['micSpeechRecognizeThreshold'])
+triggerWordPhraseTimeout = int(properties['triggerWordPhraseTimeout'])
 #In/Out Handler
-def mainInput():
+def mainInput(phrase_time_limit=None):
     global spR
     global overrideInput
     global micIndex
@@ -61,9 +64,15 @@ def mainInput():
         return input('>')
     else:
         try:
-            with sr.Microphone(micIndex) as source:
+            mic = sr.Microphone(micIndex)
+            if adjustForAmbientNoise == '1':
+                spR.adjust_for_ambient_noise(mic)
+            with mic as source:
                 print ('Getting input')
-                audio = spR.listen(source)
+                if phrase_time_limit == None:
+                    audio = spR.listen(source)
+                else:
+                    audio = spR.listen(source, phrase_time_limit=phrase_time_limit)
             return audio
         except:
             print ('Error: cannot record audio. Try "sudo apt-get install python3-pyaudio" or "pip3 install pyaudio"')

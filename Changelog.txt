@@ -1,3 +1,6 @@
+Release 1.3: Date Pending
+Adds ability to use "default" voice (fixes ESpeak being almost impossible to understand when voice is left to 0 as default), replaces UpdateGandalf.sh with UpdateGandalf.py, which will update missing configuration better without losing data. Also added configuration option to adjust for ambient noise, and option for a phrase time limit on trigger word listener.
+
 Release 1.2: 04-21-2021
 Adds OWM integration, Changelog.txt, adds extra way to say command cancel ("nevermind"), and adds version command.
 

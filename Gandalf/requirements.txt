@@ -1,3 +1,4 @@
+wheel
 SpeechRecognition
 pyttsx3
 simpleeval
