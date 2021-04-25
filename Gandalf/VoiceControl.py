@@ -1,5 +1,5 @@
 ####################
-version = '1.3'
+version = '1.3.1'
 ####################
 #Imports
 import speech_recognition as sr
@@ -65,10 +65,10 @@ def mainInput(phrase_time_limit=None):
     else:
         try:
             mic = sr.Microphone(micIndex)
-            if adjustForAmbientNoise == '1':
-                spR.adjust_for_ambient_noise(mic)
             with mic as source:
                 print ('Getting input')
+                if adjustForAmbientNoise == '1':
+                    spR.adjust_for_ambient_noise(mic)
                 if phrase_time_limit == None:
                     audio = spR.listen(source)
                 else:
