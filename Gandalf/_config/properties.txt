@@ -1,0 +1,25 @@
+## Input Settings:
+#Word used to start. Non case-sensitive [default:gandalf]
+triggerWord:gandalf
+#Set input to text (keyboard) input mode (0=off, 1=on) [default:0]
+overrideInput:0
+#Volume threshold to listen, leave blank for automatic [default:]
+micSpeechRecognizeThreshold:
+#Name of microphone to match. Leave blank for automatic, enter "default" for OS default, enter "default-win" to use default if Windows and automatic if otherwise, or enter name to match (not case-sensitive) [default:default-win]
+micName:default-win
+#Adjust for background noise when listening (0=off, 1=on) [default:1]
+adjustForAmbientNoise:1
+#Timeout for listening to phrases (only during trigger word recognition) [default:3]
+triggerWordPhraseTimeout:3
+## Output Settings
+#Index of voice, leave blank for default [default:]
+voiceIndex:
+#Rate of speech [default:185]
+voiceRate:185
+#Mute the bootup audio between the two hours (in case of power outage and auto-restart) (format is HH-HH, in 24-hour time) [default:22-7]
+muteBootupBetween:22-7
+## Other Settings
+#Preffered temperature units. Can be "k" for Kelvin, "c" for Celsius, or "f" for Fahrenheit [default:c]
+temperatureUnits:c
+#Password required to enter commands during server mode. Leave blank for no password. WARNING: PASSWORD IS NOT ENCRYPTED DURING SENDING. DO NOT USE THIS PASSWORD FOR ANYTHING ELSE! [default:]
+serverModePass:

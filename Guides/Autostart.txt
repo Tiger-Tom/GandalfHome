@@ -1,0 +1,12 @@
+Ubuntu Autologin:
+1: sudo systemctl edit getty@tty1.service
+2: Add the lines:
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetts --noissue --autologin <USERNAME> %I $TERM
+Type=idle
+3: Save & close the file
+
+Ubuntu Autostart:
+1: How to run program on user login (default path is "/home/<USERNAME>/Gandalf", AKA "~/Gandalf", assuming that you have the command "python3")
+2: Add the line "cd <PATH>/Gandalf/ && python3 <PATH>/VoiceControl.py" to "/home/<USERNAME>/.bash_login"

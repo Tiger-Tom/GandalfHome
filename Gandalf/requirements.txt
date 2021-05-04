@@ -1,0 +1,13 @@
+wheel
+SpeechRecognition
+pyttsx3
+simpleeval
+google_trans_new
+wikipedia
+pyjokes
+wyzeapy
+sounddevice
+numpy
+pydub
+simpleaudio
+pyaudio

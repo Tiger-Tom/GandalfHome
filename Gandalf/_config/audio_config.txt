@@ -1,0 +1,11 @@
+ready_for_input:./Audio/let-the-ring-bearer-decide.wav
+unrecognized_input:./Audio/gandalf_shallnotpass.wav
+exit:./Audio/fly-you-fools.wav
+wyze_light_on:./Audio/let-me-risk-a-little-more-light.wav
+wyze_light_off:./Audio/go-back-to-the-shadow.wav
+wyze_light_incorrect_option:./Audio/dont-follow-the-lights.wav
+wyze_light_dim:./Audio/dont-follow-the-lights.wav
+wyze_light_brighten:./Audio/let-me-risk-a-little-more-light.wav
+query_cancelled:./Audio/all-right-then-keep-your-secrets.wav
+unknown_query:./Audio/do-not-take-me.wav
+boot_successful:[%SPEECH_SYNTHESIZER%] Boot successful. Awaiting input

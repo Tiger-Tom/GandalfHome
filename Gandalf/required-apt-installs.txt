@@ -1,0 +1,10 @@
+python3
+python3-pip
+python3-pyaudio
+flac
+alsa-utils
+ffmpeg
+libffi-dev
+espeak
+pulseaudio
+libasound-dev

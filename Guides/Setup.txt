@@ -1,0 +1,8 @@
+Ubuntu Setup Guide: (Runs fine on Ubuntu Server running on a Raspberry PI)
+1: Run "python3 UpdateGandalf.py" (it will probably need to be ran as an administrator)
+2: Enable pulseaudio auto-spawn "sudo /etc/init.d/pulseaudio-enable-autospawn start"
+3: Restart device w/ microphone connected ("sudo shutdown -r 0")
+
+Windows Setup Guide:
+1: Run UpdateGandalf.py
+2: If an error occurs, try running it as administrator
